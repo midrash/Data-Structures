@@ -110,9 +110,11 @@ int main()
 void recursiveReverse(Queue *q)
 {
 	/* add your code here */
+	// que에서 꺼낸 값을 임시로 저장할 int 변수
 	int temp=0;
 	if(!isEmptyQueue(q))
 	{
+		// que에서 추출한 변수를 변수에 넣고 재귀시작, 재귀가 끝난후 que에 넣음
 		temp = dequeue(q);
 		recursiveReverse(q);
 		enqueue(q,temp);

@@ -118,6 +118,7 @@ int identical(BTNode *tree1, BTNode *tree2)
    /* add your code here */
     int result= 0;
     printf("item1: %d, item2: %d \n",tree1->item,tree2->item);
+    // 두 트리의 아이템이 같은지 비교후 같으면 트리의 양쪽노드를 재귀방식으로 같은지 탐색
     if(tree1->item == tree2->item){
         printf("둘이 같음!\n");
         if(tree1->left !=NULL &&tree2->left !=NULL){
@@ -129,6 +130,7 @@ int identical(BTNode *tree1, BTNode *tree2)
         }
         if(result==1)return result;
     }
+    // 한번이라도 틀리면 바로 종료
     else{
         printf("둘이 다름 ㅋㅋ\n");
         result = 1;

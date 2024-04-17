@@ -97,6 +97,7 @@ void inOrderTraversal(BSTNode *root)
 	Stack s;
 	s.top=NULL;
 	push(&s,root);
+	// 출력순위를 좌측 탐색 후 pop하면서 출려하도록 조정함
 	while(!isEmpty(&s)){
 		node = pop(&s);
 		if(node->left!=NULL){

@@ -89,29 +89,32 @@ int main()
 int moveMaxToFront(ListNode **ptrHead)
 {
     /* add your code here */
+	// 최대값을 저장할 변수와 위치 변수 선언, 
 	int max_ = -999999,max_location= 0;
+	// 탐색할 위치를 저장할 노드 포인터 선언 및 초기화
 	ListNode* node= *ptrHead;
 	ListNode* maxNode=NULL;
 	ListNode* preNode=NULL;
 	ListNode* cur=NULL;
-	int i = 0;
 	printf("max:%d, maxlo:%d\n", max_,max_location);
+	// 노드의 값을 맥스값으로 초기화
 	max_= node->item;
 	while(node->next != NULL){
+		// 노드의 다음값이 아이템과 최대값을 비교
 		if (max_<node->next->item) {
+			// 최대값이 작을시(새로운 값이 더 클시) 새로운 값으로 위치 및 최대값 변경
 			max_= node->next->item;
-			max_location=i+1;
+			max_location++;
 	 		maxNode = node->next;
 			preNode = node;
 		}
 		node = node->next;
-		i++;
 	}
 	printf("max:%d, maxlo:%d\n", max_,max_location);
-	// 삭제
+	// 삭제, 다음노드를 다음다음 노드로 이어줌
 	preNode->next=maxNode->next;
 
-	// 삽입
+	// 삽입, 노드를 하나 만들고 헤드 노드로 만들어줌
 	cur = (*ptrHead);
 	(*ptrHead) = malloc(sizeof(ListNode));
 	(*ptrHead)->item = max_;

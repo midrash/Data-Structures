@@ -98,6 +98,7 @@ void preOrderIterative(BSTNode *root)
 	Stack s;
 	s.top=NULL;
 	push(&s,root);
+	// 오른쪽을 스택에 먼저 넣음으로서 출력 순서 조절함
 	while(!isEmpty(&s)){
 		node = pop(&s);
 		if(node->right!=NULL){

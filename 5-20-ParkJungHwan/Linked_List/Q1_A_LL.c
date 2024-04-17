@@ -91,20 +91,25 @@ int main()
 int insertSortedLL(LinkedList *ll, int item)
 {
 	/* add your code here */
+	//삽입할 노드의 위치를 저장할 int변수 선언,node 선언
 	int insert_location=0;
 	ListNode *node;
 
+	// 리스트의 길이가 0보다 클떄(리스트가 있을떄)
 	if(ll->size>0)
 	{
 		for(int a =0; a<ll->size;a++){
+			// 배열의 사이즈 만큼 순회하면서 삽입할 값보다 큰 값을 찾음
 			node = findNode(ll, a);
 			printf("이번인덱스: %d ,아이템: %d , 찾는거: %d \n",a,node->item,item);
+			// 삽입할 아이템이 있다면 삽입 실패
 			if (node->item == item)
 			{
 				return -1;
 			}
 			else
 			{
+				// 삽입할 아이템 보다 노드의 아이템이 작으면 삽입 위치를 증가 
 				if (item>node->item) 
 				{
 					insert_location = a+1;
@@ -113,6 +118,7 @@ int insertSortedLL(LinkedList *ll, int item)
 			}
 		}
 	}
+	// 삽입할 위치에 노드를 만들어서 삽입하고 성공하면 위치 리턴
 	int result = insertNode(ll, insert_location,item);
 	if (result ==0)
 	{

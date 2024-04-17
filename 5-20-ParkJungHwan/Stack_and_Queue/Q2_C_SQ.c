@@ -115,10 +115,13 @@ void createStackFromLinkedList(LinkedList *ll, Stack *s)
 {
 	ListNode* node=NULL;
     /* add your code here */
+	// 스택비 비어있는지 확인 후 비어있지 않으면 스택 초기화
 	if(!isEmptyStack(s)) {
 		removeAllItemsFromStack(s);
 	}
+
 	for(int	i =0; i<ll->size;i++){
+		// 노드를 순회하면서 발견한 노드를 스택에 추가
 		node = findNode(ll,i);
 		push(s,node->item);
 	}

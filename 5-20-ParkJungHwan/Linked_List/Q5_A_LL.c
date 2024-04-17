@@ -103,16 +103,26 @@ int main()
 void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, LinkedList *resultBackList)
 {
 	/* add your code here */
+	// 앞에 탐색할 범위에 대한 변수 선언
 	int frontlen;
+	// 변수가 홀수면 앞에 탐색범위에 1 추가해줌
 	if(ll->size%2==1) frontlen= (ll->size/2)+1;
 	else frontlen= (ll->size/2);
+
+	// 뒷 탐색 범위 선언 및 초기화
 	int backlen= ll->size-frontlen;
+
+	// 찾은 노드를 임시 저장할 포인터 선언
 	ListNode* node;
+
+	// 앞에 반복
 	for(int i = 0; i<frontlen;i++){
 		node = findNode(ll,0);
 		insertNode(resultFrontList,i,node->item);
 		removeNode(ll,0);
 	}
+
+	// 뒤에 반복
 	for(int i = 0; i<backlen;i++){
 		node = findNode(ll,0);
 		insertNode(resultBackList,i,node->item);

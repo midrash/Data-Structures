@@ -92,58 +92,46 @@ int main()
 void postOrderIterativeS1(BSTNode *root)
 {
 	/* add your code here */
-	// BSTNode* node;
-	// node->left=NULL;
-	// node->right=NULL;
-	// Stack s;
-	// s.top=NULL;
-	// push(&s,root);
-	// printf("후위정렬 시작 \n");
-	// while(!isEmpty(&s)){
-	// 	node = pop(&s);
-	// 	if((node->right!=NULL)){
-	// 		push(&s,node->right);
-	// 	}
-	// 	if((node->left!=NULL)){
-	// 		push(&s,node->left);
-	// 	}
-	// 	printf("%d, ",node->item);
-	// }
-	// printf("\n");
-	// printf("후위정렬 끝 \n");
-	/* add your code here */
 	Stack S;
     S.top = NULL;
     BSTNode *current = root;
-
-    int shouldContinue = 1;
-    while(shouldContinue)
+    while(1)
     {
         if(current != NULL)
         {
+			// 현재 노드에서 우측 노드가 있따면 우측 노드를 스택에 넣음
             if(current->right != NULL){
             	push(&S, current->right);
             }
-            	push(&S, current);
+			// 현재 노드를 스택에 넣고 현재 노드를 좌측 노드로 변경
+            push(&S, current);
             current = current->left;
         }
-        	else
+        else
         {
+			// 현재 노드가 NULL일떄(마지막 노드에 도착후 돌아올떄) pop을 통해 현재노드 변경
             current = pop(&S);
+			// 스택의 top이 NULL이면 현재 노드가 마지막이므로 출력후 종료
             if(peek(&S) == NULL){
-                shouldContinue = 0;
 				printf("%d ", current->item);
                 break;
 				current = NULL;
             }
-            if (shouldContinue && current->right != NULL && peek(&S)->item == current->right->item)
+			// 현재 노드에 우측노드가 있고, 스택의 top의 아이템과 우측노드의 아이템이 같을때
+			// 스택의 top과 우측노드가 같을때
+			// 스택의 top과 우측노드가 같다면 아직 우측을 미탐색한것이고
+			// 다르다면 우측노드를 탐색후 돌아왔다는 뜻임
+            if (current->right != NULL && peek(&S)->item == current->right->item)
             {
+				// 스택에서 우측노드를 팝하고 현재 노드를 스택에 넣음
                 pop(&S);
                 push(&S,current);
+				// 현재 노드는 우측노드로 변경
                 current = current->right;
             }
             else
             {
+				//리프노드일때 현재노드를 출력하고 현재노드는 NULL로 변경
                 int items= current->item;
                 printf("%d ", current->item);
                 current = NULL;

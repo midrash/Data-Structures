@@ -103,13 +103,16 @@ int main()
 int smallestValue(BTNode *node)
 {
 	/* add your code here */
+    // 최소값 변수를 선언하고 루트노드의 아이템을 추가해줌, 좌우노드에서 리턴값을 받이위한 변수를 선언후 초기화
     int min = node->item,left=99999,right=99999;
+    // 재귀로 좌우 노드 탐색 진행후 해당 노드에서 가장 작은 값을 받아옴
     if(node->left!= NULL){
         left = smallestValue(node->left);
     }
     if(node->right!= NULL){
         right = smallestValue(node->right);
     }
+    // 루트의 최소값과 비교하여 가장 작은 값으로 변경하여 리턴함 
     if(min>left) min = left;
     if(min>right) min = right;
     return min;

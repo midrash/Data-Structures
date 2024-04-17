@@ -106,6 +106,7 @@ int main()
 void mirrorTree(BTNode *node)
 {
 	/* add your code here */
+    // 좌우 자식이 있다면 탐색 진행
     if ((node->left==NULL)&&(node->right==NULL)){
         return;
     }
@@ -115,6 +116,8 @@ void mirrorTree(BTNode *node)
     if((node->right!=NULL)){
         mirrorTree(node->right);
     }
+
+    // 탬색후 리프노드 부터 좌우 노드를 서로 교체함
     BTNode* temp;
     temp = node->left;
     node->left = node->right;

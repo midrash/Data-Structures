@@ -105,25 +105,32 @@ int isStackPairwiseConsecutive(Stack *s)
 {
 	
   	/* add your code here */
-  	
+  	// 스택이 비어있으면 0을 리턴
 	if (isEmptyStack(s))
   	{
 		return 0;
   	}
   	else
   	{
+		// 비교를 위한 앞변수, 뒷변수 선언
 		int first,last;
+
 		while(!isEmptyStack(s)){
+			// 반복시 매번 비교변수 초기화
 			first = 0; last = 0;
 			for(int	i=0; i<2;i++)
 			{
+				// 2번 반복을 진행하며 첫번째는 first에 두번쨰는 last에 변수 삽입
 				if(i==0) first = pop(s);
 				else last = pop(s);
+				
+				// 스택의 수가 홀수였을경우 null을 팝한것을 위한 null체크
 				if (last == INT_MIN)
 				{
 					return 0;
 				}
 			}
+			// 앞뒤의 변수 차이가 1이라면 계속 진행
 			if ((last== first+1) ||	(last== first-1))
 			{
 				continue;

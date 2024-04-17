@@ -112,7 +112,9 @@ int main()
 void removeUntil(Stack *s, int value)
 {
 /* add your code here */
+	// pop한 값을 넣을 int 변수 선언
 	int n;
+	// 스택의 top가 아닐때까지 pop 진행
 	do{
 		if(peek(s)== value) break;
 		else{

@@ -94,6 +94,7 @@ int main()
 void levelOrderTraversal(BSTNode* root)
 {
     /* add your code here */
+	// 큐를 이용하여 bfs 탐색하듯이 진행하며 큐에서 팝 직후 노드의 아이템을 출력
 	BSTNode * node;
 	node=NULL;
 	Queue q;

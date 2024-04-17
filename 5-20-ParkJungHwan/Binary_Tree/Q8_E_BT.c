@@ -103,9 +103,11 @@ int main()
 int hasGreatGrandchild(BTNode *node)
 {
     /* add your code here */
+    // 리프노드 도착하면 리턴함
     if((node->left==NULL)&&(node->right==NULL)){
         return 0;   
     }
+    // 리프노드까지 탐색후 리프노드 부터 레벨당 1씩 증가하며 올라옴
     int result=0,left =0, right =0;
     if((node->left!=NULL)){
         left = hasGreatGrandchild(node->left);
@@ -113,12 +115,14 @@ int hasGreatGrandchild(BTNode *node)
     if((node->right!=NULL)){
         right = hasGreatGrandchild(node->right);
     }
+    // 좌우 중 더 큰(깊은)값으로 리턴함
     if (left>right){
         result = left+1;
     }
     else{
         result = right+1;
     }
+    // 리턴값(깊이가 3)이상이면 그떄부턴 증손노드가 있는거임
     if(result>=3){
         printf("%d \n",node->item);
     }

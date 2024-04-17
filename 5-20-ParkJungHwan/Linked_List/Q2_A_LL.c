@@ -104,12 +104,10 @@ int main()
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 {
     /* add your code here */
-	//ListNode *findNode(LinkedList *ll, int index);
-	//int insertNode(LinkedList *ll, int index, int value);
-	//int removeNode(LinkedList *ll, int index);
+	// 삽입할 위치를 위한 int변수 선언
 	int num=1;
-	int ll1size = ll1->size;
-	for(int i =0; i< ll1size;i++){
+	for(int i =0; i< ll1->size;i++){
+		// ll2에서 하나씩 꺼내서 ll1에 2씩 띄워서 추가함
 		ListNode* node = findNode(ll2,0);
 		insertNode(ll1,num,node->item);
 		removeNode(ll2,0);

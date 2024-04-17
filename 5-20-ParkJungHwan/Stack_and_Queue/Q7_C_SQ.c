@@ -105,19 +105,25 @@ int main()
 int balanced(char *expression)
 {
 /* add your code here */
+	// 스택 선언 및 초기화
 	Stack s;
 	s.ll.head = NULL;
 	s.ll.size = 0;
 	int arrSize=0;
+	// 배열의 개수를 체크하기 위한 반복문
 	for (; *expression; expression++, arrSize++)
         ;
 	expression -= arrSize;
+
+	// 배열개수가 홀수면 컷
 	if (arrSize%2==1){
 		printf("홀수라서 밸런스 아님\n");
 		return 1;
 	}
 	printf("size:%d\n",arrSize);
+	
 	for (int i =0; i<arrSize;i++){
+		// 배열을 순회하면서 좌측 괄호면 해당 괄호의 번호를 설정하여 스택에 추가
 		if(expression[i]=='{' ){
 			push(&s,1);
 		}
@@ -128,6 +134,7 @@ int balanced(char *expression)
 			push(&s,3);
 		}
 		else{
+			// 우측 괄호면 스택의 탑을 확인후 우측 괄호와 짝이 맞으면 스택을pop, 틀리면 종료
 			char sig = peek(&s);
 			if (isEmptyStack(&s)){
 				printf("pop 끝남 밸런스 아님\n");
@@ -149,10 +156,12 @@ int balanced(char *expression)
 		}
 	}
 	printf("스택이 남았나: %d \n",isEmptyStack(&s));
+	// 스택이비어있으면 성공
 	if(isEmptyStack(&s)){
 		printf("밸런스 맞음\n");
 		return 0;
 	}
+	// 스택이 남아있으면 실패
 	else{
 		printf("밸런스 아님\n");
 		return 1;

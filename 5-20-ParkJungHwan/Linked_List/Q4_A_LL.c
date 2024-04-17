@@ -84,12 +84,12 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
+// 3번의 짝수 버전
 void moveEvenItemsToBack(LinkedList *ll)
 {
 	/* add your code here */
-	int flag = 0;
 	int llsize = ll->size;
-	int i ,findlocation=0,findnum=0;
+	int i; 
 	for(i =0; i<llsize;i++){
 		ListNode* node = findNode(ll,i);
 		if((node->item%2) == 0){
@@ -97,7 +97,6 @@ void moveEvenItemsToBack(LinkedList *ll)
 			insertNode(ll,ll->size,node->item);
 			llsize--;
 			i--;
-			// printf("짝수찾음 index: %d, item: %d ,flag: %d \n",findlocation,findnum,flag);
 		}
 	}
 }

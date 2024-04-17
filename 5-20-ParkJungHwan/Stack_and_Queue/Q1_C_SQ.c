@@ -117,8 +117,11 @@ int main()
 void createQueueFromLinkedList(LinkedList *ll, Queue *q)
 {
 	/* add your code here */
+	// 리스트 노드 생성 및 초기화
 	ListNode* node=NULL;
+
 	for (int i = 0; i<ll->size;i++){
+		//LinkedList를 순회하면서 Queue에 넣음
 		node = findNode(ll,i);
 		enqueue(q,node->item);
 	}

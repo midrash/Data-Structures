@@ -104,13 +104,16 @@ int sumOfOddNodes(BTNode *node)
 
 {
     /* add your code here */
+    // 홀수 값을 더하기 위한 변수 선언 및 초기화
     int oddnum=0;
+    // 좌우로 재귀탐색을 진행하며 리턴값을 결과값(홀수값)에 더해줌
     if(node->left!=NULL){
         oddnum += sumOfOddNodes(node->left);
     }
     if(node->right!=NULL){
         oddnum += sumOfOddNodes(node->right);
     }
+    // 이번 노드의 아이템이 홀수면 더해줌
     if((node->item%2)==1){
         oddnum += node->item;
     }

@@ -117,9 +117,11 @@ void reverse(Queue *q)
     s.ll.head=NULL;
 	s.ll.size =0;
 	s.ll.tail =NULL;
-	int data=0;
+	int data=0; // que에 넣고 뽑을때 사용할 int 변수
 	printf("시작 전 스택이 들어있는지 체크 : %d\n", !isEmptyStack(&s));
 	printf("들어가기전 큐가 들어있는지 체크 : %d\n", !isEmptyQueue(q));
+
+	// 큐가 빌때까지 뽑아서 스택에 넣음
 	while(!isEmptyQueue(q))
 	{
 		data = dequeue(q);
@@ -129,6 +131,7 @@ void reverse(Queue *q)
 
 	}
 	printf("들어가기전 스택이 들어있는지 체크 : %d\n", !isEmptyStack(&s));
+	// 스택이 빌때까지 뽑아다 큐에 넣음
 	while(!isEmptyStack(&s))
 	{
 		data = pop(&s);

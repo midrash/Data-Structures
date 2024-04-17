@@ -97,14 +97,17 @@ int main()
 int maxHeight(BTNode *node)
 {
     /* add your code here */
+    // node 자체가 없으면바로 실패 처리
     if(node == NULL){
         return -1;
     }
+    // 리프노드 도달시 0을 리턴함
     if((node->left==NULL)&&(node->right==NULL)){
         // printf("자식이 없음\n");
         return 0;
     }
     else{
+        // 재귀식으로 리프노드 부터 올라올떄마다 리턴값을 좌우 각각 더해서 비교후 더 큰값(더 깊은 노드)을 리턴함
         int left=0,right=0,result=0;
         if (node->left!= NULL){
             left= maxHeight(node->left);

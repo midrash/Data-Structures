@@ -103,12 +103,14 @@ int countOneChildNodes(BTNode *node)
 {
     /* add your code here */
     int cnt = 0;
+    // 자식 노드가 2개면 증가값 없이 리턴
     if((node->left!=NULL)&&(node->right!=NULL)){
         printf("자식 2개임\n");
         cnt+=countOneChildNodes(node->left);
         cnt+=countOneChildNodes(node->right);
         printf("cnt:%d\n",cnt);
     }
+    // 자식이 1개라면 리턴값에 1증가해줌
     else if((node->left!=NULL)&&(node->right==NULL)){
         printf("왼쪽자식있음\n");
         cnt+=(countOneChildNodes(node->left)+1); 

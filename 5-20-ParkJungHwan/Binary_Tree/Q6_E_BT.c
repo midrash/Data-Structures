@@ -107,10 +107,12 @@ void printSmallerValues(BTNode *node, int m)
 {
 	/* add your code here */
     // printf("item: %d\n",node->item);
+    // 현재 노드가 입력값 보다 작으면 출력
     if(node->item<m){
         // printf("m보다 작음 item: %d, m: %d\n",node->item,m);
         printf("%d ",node->item);
     }
+    // 좌우 노드가 있으면 탐색 진행
     if(node->left!=NULL){
         printSmallerValues(node->left,m);
     }

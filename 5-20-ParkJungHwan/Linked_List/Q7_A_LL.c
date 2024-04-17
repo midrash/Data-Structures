@@ -88,23 +88,32 @@ int main()
 void RecursiveReverse(ListNode **ptrHead)
 {
 	/* add your code here */
+	// 노드의 위치를 바꾸기 위한 앞노드와 현재노드 포인터 선언
 	ListNode *preNode, *curNode, *firstNode=NULL;
+	// 이전 노드를 헤드 노드로 초기화
 	preNode = *ptrHead;
+	// 이전노드의 다음이 NULL이 아니라면 현재 노드를 이전노드의 다음노드로 초기화 
 	if(preNode->next!= NULL){
 		curNode = preNode->next;
 	}
 	while(1){
 		// printf("이전노드: %d, 현재노드: %d \n",preNode->item,curNode->item);
+		// 마지막 노드를 찾을떄 까지 탐색 진행
 		if (curNode->next == NULL){
 			// printf("마지막 노드 찾음!: %d\n",curNode->item);
+			// 처음 발견한 마지막 노드를 따로 기록해둠(마지막에 헤드노드가 될예정)
 			if (firstNode==NULL){
 				firstNode=curNode;
 			}
+			// 현재 노드의 다음노드를 이전노드로 이어주고 이전노드의 다음노드를 NULL로 만듬
 			curNode->next = preNode;
 			preNode->next = NULL;
+			// 다시 처음노드(헤드노드)부터 탐색을 하기위핸 노드 초기화
 			preNode = *ptrHead;
+			// 만약 헤드 노드의 다음노드가 NULL이라면 역정렬이 끝났다고 판단
 			if (preNode->next==NULL) {
 				printf("역정렬 완료!\n");
+				// 헤드의 위치를 아까 기록한 첫 노드로 바꿔주고 반복 종료
 				*ptrHead= firstNode;
 				preNode = *ptrHead;
 				break;

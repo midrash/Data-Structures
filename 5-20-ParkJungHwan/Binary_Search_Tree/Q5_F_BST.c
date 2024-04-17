@@ -96,7 +96,7 @@ void postOrderIterativeS2(BSTNode *root)
 	ls.top=NULL;
 	rs.top=NULL;
 	BSTNode* node = root;
-	
+	// 4번과 방법은 동일하나 우측 노드를 다른 노드에 넣어서 구현함(사실 큰 의미는 없음)
 	while(1){
 		if (node !=NULL){
 			if(node->right!=NULL){

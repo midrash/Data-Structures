@@ -87,21 +87,19 @@ int main()
 void moveOddItemsToBack(LinkedList *ll)
 {
 	/* add your code here */
-	//ListNode * findNode(LinkedList *ll, int index);
-	//int insertNode(LinkedList *ll, int index, int value);
-	//int removeNode(LinkedList *ll, int index);
-	int flag = 0;
+	// 반복에 사용할 ll의 크기 선언
 	int llsize = ll->size;
-	int i ,findlocation=0,findnum=0;
+	// 반복문의 반복 변수를 조절하기 위한 i 선언
+	int i;
 	for(i =0; i<llsize;i++){
 		ListNode* node = findNode(ll,i);
-
+		// 노드의 아이템이 홀수면 삭제 후 다시 삽입함, 탐색범위와 탐색 인덱스를 1씩 줄임
+		// 제일 마지막값(지워고 추가한값)은 탐색할 필요가 없고, 하나 지우면서 한칸씩 당겨져서 다시 위치를 탐색해야함
 		if((node->item%2) == 1){
 			removeNode(ll,i);
 			insertNode(ll,ll->size,node->item);
 			llsize--;
 			i--;
-			// printf("홀수찾음 index: %d, item: %d ,flag: %d \n",findlocation,findnum,flag);
 		}
 	}
 }
